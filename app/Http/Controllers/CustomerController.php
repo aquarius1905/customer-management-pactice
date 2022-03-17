@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
-use Log;
 
 class CustomerController extends Controller
 {
@@ -50,11 +49,6 @@ class CustomerController extends Controller
 
     public function search(Request $request)
     {
-        {
-            $inputs = $request->except('action');
-            $request->session()->put('inputs', $inputs);
-        }
-
         $query = Customer::query();
         if($request->name) {
             $query->orWhere('name', 'like', "%{$request->name}%");
@@ -84,11 +78,6 @@ class CustomerController extends Controller
             $query->orWhere('inquiry', 'like', "%{$request->inquiry}%");
         }
         $items = $query->get();
-        {
-            $inputs = $request->session()->get('inputs');
-            Log::Debug($inputs);
-            return view('management', ['items' => $items, 'inputs' => $inputs]);
-        }
-
+        return view('management', ['items' => $items]);
     }
 }
