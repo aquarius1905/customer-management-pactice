@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>顧客管理システム</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </head>
 <style>
   .ttl {
@@ -102,9 +103,8 @@
   }
   .btn-wrapper {
       display: flex;
-      margin: 50 auto 0;
+      margin: 50px auto 0;
       width: 60%;
-      margin-top: 50px;
       text-align: center;
   }
   .complete_form {
@@ -119,7 +119,7 @@
   }
   .bk-btn {
       color: #fff;
-      background: #006eb0;
+      background: #0091E5;
       padding: 20px 50px;
       display: inline-block;
       border-radius: 5px;

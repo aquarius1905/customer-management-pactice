@@ -27,7 +27,7 @@ return [
     'between' => [
         'numeric' => 'The :attribute must be between :min and :max.',
         'file' => 'The :attribute must be between :min and :max kilobytes.',
-        'string' => 'The :attribute must be between :min and :max characters.',
+        'string' => ':attributeは10桁以上11桁以内で入力してください',
         'array' => 'The :attribute must have between :min and :max items.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
@@ -142,9 +142,12 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'furigana' =>[
+            'regex' => ':attributeは全角カタカナで入力してください'
         ],
+        'postcode' =>[
+            'size' => ':attributeは7桁で入力してください'
+        ]
     ],
 
     /*

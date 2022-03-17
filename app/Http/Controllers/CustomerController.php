@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Log;
 
 class CustomerController extends Controller
 {
@@ -38,7 +39,6 @@ class CustomerController extends Controller
             $customer->fill($inputs)->save();
             //送信完了ページのviewを表示
             return view('complete');
-            
         }
     }
 
@@ -46,5 +46,49 @@ class CustomerController extends Controller
     {
         $items = Customer::all();
         return view('management', ['items' => $items]);
+    }
+
+    public function search(Request $request)
+    {
+        {
+            $inputs = $request->except('action');
+            $request->session()->put('inputs', $inputs);
+        }
+
+        $query = Customer::query();
+        if($request->name) {
+            $query->orWhere('name', 'like', "%{$request->name}%");
+        }
+        if($request->furigana) {
+            $query->orWhere('furigana', 'like', "%{$request->furigana}%");
+        }
+        if($request->email) {
+            $query->orWhere('email', 'like', "%{$request->email}%");
+        }
+        if($request->tel) {
+            $query->orWhere('tel', 'like', "%{$request->tel}%");
+        }
+        if($request->postcode) {
+            $query->orWhere('postcode', 'like', "%{$request->postcode}%");
+        }
+        if($request->address) {
+            $query->orWhere('address', 'like', "%{$request->address}%");
+        }
+        if($request->birthday) {
+            $query->orWhere('birthday', 'like', "%{$request->birthday}%");
+        }
+        if($request->sex) {
+            $query->orWhere('sex', 'like', "%{$request->sex}%");
+        }
+        if($request->inquiry) {
+            $query->orWhere('inquiry', 'like', "%{$request->inquiry}%");
+        }
+        $items = $query->get();
+        {
+            $inputs = $request->session()->get('inputs');
+            Log::Debug($inputs);
+            return view('management', ['items' => $items, 'inputs' => $inputs]);
+        }
+
     }
 }

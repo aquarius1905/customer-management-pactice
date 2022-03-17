@@ -14,11 +14,11 @@ class Customer extends Model
     ];
     public static $rules = array(
         'name' => 'required|max:20',
-        'furigana' => 'required|max:50',
+        'furigana' => 'required|max:50|regex:/^[ァ-ヶー　]+$/u',
         'email' => 'required|email',
-        'postcode' => 'required',
+        'postcode' => 'required|size:7',
         'address' => 'required',
-        'tel' => 'required',
+        'tel' => 'required|between:10,11',
         'birthday' => 'required',
         'sex' => 'required',
         'inquiry' => 'required|max:1000',

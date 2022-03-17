@@ -21,3 +21,5 @@ Route::post('/confirm', [CustomerController::class, 'confirm'])->name('confirm')
 Route::post('/complete', [CustomerController::class, 'send'])->name('send');
 //顧客管理画面
 Route::get('/management', [CustomerController::class, 'getCustomers'])->name('getCustomers');
+//顧客検索
+Route::get('/search', [CustomerController::class, 'search'])->name('search');

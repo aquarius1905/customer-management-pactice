@@ -17,18 +17,9 @@
     <div class="form-item">
       <p class="form-item-label">
         <span class="form-item-label-required">必須</span>フリガナ</p>
-      <input type="text" name="furigana" class="form-item-input" placeholder="例：ヤマダ　タロウ" value="{{old('furigana')}}">
+      <input type="text" name="furigana" class="form-item-input" placeholder="例：ヤマダ　タロウ" value="{{old('furigana')}}" >
     </div>
     @error('furigana')
-    <p class="error">{{ $message }}</p>
-    @enderror
-  </div>
-  <div>
-    <div class="form-item">
-      <p class="form-item-label"><span class="form-item-label-required">必須</span>電話番号</p>
-      <input type="text" name="tel" class="form-item-input" placeholder="例：090-1234-5678" value="{{old('tel')}}">
-    </div>
-    @error('tel')
     <p class="error">{{ $message }}</p>
     @enderror
   </div>
@@ -43,8 +34,17 @@
   </div>
   <div>
     <div class="form-item">
+      <p class="form-item-label"><span class="form-item-label-required">必須</span>電話番号</p>
+      <input type="text" name="tel" class="form-item-input" placeholder="例：09012345678" value="{{old('tel')}}" oninput="value = value.replace(/[^0-9]+/i,'');" minlength="10" maxlength="11">
+    </div>
+    @error('tel')
+    <p class="error">{{ $message }}</p>
+    @enderror
+  </div>
+  <div>
+    <div class="form-item">
       <p class="form-item-label"><span class="form-item-label-required">必須</span>郵便番号</p>
-      <input type="text" name="postcode" class="form-item-input" placeholder="例：101-0047" pattern="\d{3}-\d{4}" title="郵便番号は、3桁の数字、ハイフン（-）、4桁の数字の順で記入してください。" value="{{old('postcode')}}">
+      <input type="text" name="postcode" class="form-item-input" placeholder="例：1010047" oninput="value = value.replace(/[^0-9]+/i,'');" value="{{old('postcode')}}" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
     </div>
     @error('postcode')
     <p class="error">{{ $message }}</p>

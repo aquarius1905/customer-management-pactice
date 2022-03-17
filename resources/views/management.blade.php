@@ -53,6 +53,11 @@
       margin-left: 40px;
       font-size: 18px;
   }
+  .search-btn-wrapper {
+    display: flex;
+    margin: 0 auto;
+  }
+  .clear-btn,
   .search-btn {
       border-radius: 6px;
       margin: 20px auto 0;
@@ -66,33 +71,38 @@
       border: none;
       cursor: pointer;
   }
-.management-table {
-  width: 90%;
-  margin: 0 auto;
-}
-.management-table th {
-	background: #006eb0;
-  font-weight: bold;
-	color: #eee;
-  height: 50px;
-  line-height: 50px;
-}
-.management-table td {
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-}
-
-/* 偶数行　１行ごとの色変えが不要なら削除 */
-.management-table tr:nth-child(2n) td  {
-  background: #eee;
-}
+  .clear-btn {
+    width: 180px;
+    background-color: #0091E5;
+  }
+  .management-form {
+    width: 90%;
+    margin : 0 auto
+  }
+  .management-table {
+    width: 100%;
+  }
+  .management-table {
+    border-bottom: 1px solid #eee;
+  }
+  .management-table th {
+    background: #006eb0;
+    font-weight: bold;
+    color: #eee;
+    height: 50px;
+    line-height: 50px;
+  }
+  .management-table td {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
 </style>
 
 @section('content')
 <div class="search">
   <h2 class="sub_ttl">顧客検索</h2>
-  <form class="search-form" action="{{ route('confirm') }}" method="get">
+  <form class="search-form" action="{{ route('search') }}" method="get">
     @csrf
     <div class="search-item-wrapper">
       <div class="search-item-left">
@@ -105,18 +115,18 @@
           <input type="text" name="furigana" class="search-item-input">
         </div>
         <div class="search-item">
-          <p class="search-item-label">電話番号</p>
-          <input type="text" name="tel" class="search-item-input">
+          <p class="search-item-label">メールアドレス</p>
+          <input type="text" name="email" class="search-item-input">
         </div>
         <div class="search-item">
-          <p class="search-item-label">メールアドレス</p>
-          <input type="email" name="email" class="search-item-input">
+          <p class="search-item-label">電話番号</p>
+          <input type="text" name="tel" class="search-item-input">
         </div>
       </div>
       <div class="search-item-right">
         <div class="search-item">
           <p class="search-item-label">郵便番号</p>
-          <input type="text" name="postcode" class="search-item-input">
+          <input type="text" name="postcode" class="search-item-input" oninput="value = value.replace(/[^0-9]+/i,'');" value="{{old('postcode')}}" maxlength="8">
         </div>
         <div class="search-item">
           <p class="search-item-label">住所</p>
@@ -124,13 +134,13 @@
         </div>
         <div class="search-item">
           <p class="search-item-label">生年月日</p>
-          <input type="date" name="birthday" class="search-item-input">
+          <input type="input" name="birthday" class="search-item-input">
         </div>
         <div class="search-item">
           <p class="search-item-label">性別</p>
           <div class="search-item-radio">
-            <input type="radio" name="sex" id="mail" value="男"><label for="mail" class="sex_lbl">男</label>
-            <input type="radio" name="sex" id="femail" value="女"><label for="femail" class="sex_lbl">女</label>
+            <input type="radio" name="sex" id="mail" value="男" tabindex="1"><label for="mail" class="sex_lbl">男</label>
+            <input type="radio" name="sex" id="femail" value="女"  tabindex="2"><label for="femail" class="sex_lbl">女</label>
           </div>
         </div>
         <div class="search-item">
@@ -139,10 +149,12 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="search-btn">検索</button>
+    <div class="search-btn-wrapper">
+      <button type="submit" class="search-btn">検索</button>
+    </div>
   </form>
 </div>
-<div class="management_form">
+<div class="management-form">
   <h2 class="sub_ttl">顧客一覧</h2>
   <table class="management-table">
     <tr>
