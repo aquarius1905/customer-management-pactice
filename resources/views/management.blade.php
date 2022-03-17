@@ -12,7 +12,6 @@
     width: 70%;
     margin: 0 auto;
     border: 1px solid #eee;
-    margin-bottom: 50px;
   }
   .search-form {
     padding: 20px;
@@ -57,7 +56,6 @@
     display: flex;
     margin: 0 auto;
   }
-  .clear-btn,
   .search-btn {
       border-radius: 6px;
       margin: 20px auto 0;
@@ -71,18 +69,12 @@
       border: none;
       cursor: pointer;
   }
-  .clear-btn {
-    width: 180px;
-    background-color: #0091E5;
-  }
   .management-form {
     width: 90%;
-    margin : 0 auto
+    margin : 50px auto;
   }
   .management-table {
     width: 100%;
-  }
-  .management-table {
     border-bottom: 1px solid #eee;
   }
   .management-table th {

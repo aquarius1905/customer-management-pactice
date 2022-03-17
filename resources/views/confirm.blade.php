@@ -1,12 +1,21 @@
 @extends('layouts.default')
 @section('title', '送信内容確認')
 
+<style>
+  .form-item-content {
+    width: 90%;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    font-size: 18px;
+  }
+</style>
 @section('content')
 <form class="form" action="{{ route('send') }}" method="POST">
   @csrf
   <div class="form-item">
     <p class="form-item-label">お名前</p>
-    <p  class="form-item-content">{{ $inputs['name'] }}</p>
+    <p class="form-item-content">{{ $inputs['name'] }}</p>
     <input type="hidden" name="name" value="{{ $inputs['name'] }}" >
   </div>
   <div class="form-item">
@@ -51,7 +60,7 @@
   </div>
   </div>
   <div class="btn-wrapper">
-    <button type="submit" class="form-btn" name="action" value="back">入力内容修正</button>
+    <button type="submit" class="modify-btn" name="action" value="back">入力内容修正</button>
     <button type="submit" class="form-btn" name="action" value="submit">送信する</button>
   </div>
 </form>

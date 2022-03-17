@@ -55,13 +55,6 @@
       background: #eaedf2;
       font-size: 18px;
   }
-  .form-item-content {
-      width: 90%;
-      font-weight: bold;
-      font-size: 18px;
-      width: 100%;
-      font-size: 18px;
-  }
   .form-item-radio {
       width: 100%;
       font-size: 18px;
@@ -81,7 +74,9 @@
       font-size: 18px;
       resize: none;
   }
-  .form-btn {
+  .form-btn,
+  .modify-btn
+   {
       border-radius: 6px;
       margin: 32px auto 0;
       padding: 20px 0;
@@ -106,28 +101,6 @@
       margin: 50px auto 0;
       width: 60%;
       text-align: center;
-  }
-  .complete_form {
-    width: 40%;
-    margin: 0 auto;
-    margin-top: 100px;
-  }
-  .complete_content {
-      line-height: 70px;
-      font-size: 20px;
-      text-align: center;
-  }
-  .bk-btn {
-      color: #fff;
-      background: #0091E5;
-      padding: 20px 50px;
-      display: inline-block;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      font-size: 20px;
-      text-decoration: none;
-      width: 100%;
   }
 </style>
 <body>
