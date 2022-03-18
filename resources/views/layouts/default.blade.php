@@ -28,13 +28,20 @@
       display: flex;
       align-items: center;
   }
-  .form-item-label {
+  .form-item-lbl {
       width: 90%;
       font-weight: bold;
       font-size: 18px;
       color: #555;
   }
-  .form-item-label-required {
+  .form-item-name-lbl {
+      width: 10%;
+      margin-left: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #555;
+  }
+  .form-item-lbl-required {
       border-radius: 6px;
       margin-right: 20px;
       padding: 8px 0;
@@ -48,10 +55,19 @@
   .form-item-input {
       border: 1px solid #ddd;
       border-radius: 6px;
-      margin-left: 40px;
+      margin-left: 30px;
       padding: 0 10px;
       height: 48px;
       width: 100%;
+      background: #eaedf2;
+      font-size: 18px;
+  }
+  .form-item-name-input {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0 10px;
+      height: 48px;
+      width: 50%;
       background: #eaedf2;
       font-size: 18px;
   }

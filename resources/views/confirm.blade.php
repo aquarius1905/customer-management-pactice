@@ -14,47 +14,47 @@
 <form class="form" action="{{ route('send') }}" method="POST">
   @csrf
   <div class="form-item">
-    <p class="form-item-label">お名前</p>
-    <p class="form-item-content">{{ $inputs['name'] }}</p>
-    <input type="hidden" name="name" value="{{ $inputs['name'] }}" >
+    <p class="form-item-lbl">お名前</p>
+    <p class="form-item-content">{{ $name }}</p>
+    <input type="hidden" name="name" value="{{ $name }}" >
   </div>
   <div class="form-item">
-    <p class="form-item-label">フリガナ</p>
-    <p class="form-item-content">{{ $inputs['furigana'] }}</p>
-    <input type="hidden" name="furigana" value="{{ $inputs['furigana'] }}">
+    <p class="form-item-lbl">フリガナ</p>
+    <p class="form-item-content">{{ $furigana }}</p>
+    <input type="hidden" name="furigana" value="{{ $furigana }}">
   </div>
   <div class="form-item">
-    <p class="form-item-label">電話番号</p>
+    <p class="form-item-lbl">電話番号</p>
     <p class="form-item-content">{{ $inputs['tel'] }}</p>
     <input type="hidden" name="tel" value="{{ $inputs['tel'] }}">
   </div>
   <div class="form-item">
-    <p class="form-item-label">メールアドレス</p>
+    <p class="form-item-lbl">メールアドレス</p>
     <p class="form-item-content">{{ $inputs['email'] }}</p>
     <input type="hidden" name="email" value="{{ $inputs['email'] }}">
   </div>
   <div class="form-item">
-    <p class="form-item-label">郵便番号</p>
+    <p class="form-item-lbl">郵便番号</p>
     <p class="form-item-content">{{ $inputs['postcode'] }}</p>
     <input type="hidden" name="postcode" value="{{ $inputs['postcode'] }}">
   </div>
   <div class="form-item">
-    <p class="form-item-label">住所</p>
+    <p class="form-item-lbl">住所</p>
     <p class="form-item-content">{{ $inputs['address'] }}</p>
     <input type="hidden" name="address" value="{{ $inputs['address'] }}">
   </div>
   <div class="form-item">
-    <p class="form-item-label">生年月日</p>
+    <p class="form-item-lbl">生年月日</p>
     <p class="form-item-content">{{ $inputs['birthday'] }}</p>
     <input type="hidden" name="birthday" value="{{ $inputs['birthday'] }}">
   </div>
   <div class="form-item">
-    <p class="form-item-label">性別</p>
+    <p class="form-item-lbl">性別</p>
     <p class="form-item-content">{{ $inputs['sex'] }}</p>
     <input type="hidden" name="sex" value="{{ $inputs['sex'] }}">
   </div>
   <div class="form-item">
-    <p class="form-item-label">お問い合わせ内容</p>
+    <p class="form-item-lbl">お問い合わせ内容</p>
     <p class="form-item-content">{{ $inputs['inquiry'] }}</p>
     <input type="hidden" name="inquiry" value="{{ $inputs['inquiry'] }}">
   </div>

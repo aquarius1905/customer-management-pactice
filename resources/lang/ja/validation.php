@@ -162,8 +162,10 @@ return [
     */
 
     'attributes' => [
-        'name' => 'お名前',
-        'furigana' => 'フリガナ',
+        'lastname' => '姓',
+        'firstname' => '名',
+        'lastname_furigana' => 'セイ',
+        'firstname_furigana' => 'メイ',
         'tel' => '電話番号',
         'email' => 'メールアドレス',
         'postcode' => '郵便番号',

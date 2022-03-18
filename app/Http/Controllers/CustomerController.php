@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Carbon\Carbon;
+use Log;
 
 class CustomerController extends Controller
 {
@@ -16,7 +18,9 @@ class CustomerController extends Controller
     {
         $this->validate($request, Customer::$rules);
         $inputs = $request->all();
-        return view('confirm', ['inputs' => $inputs]);
+        $name = $request->lastname.'　'.$request->firstname;
+        $furigana = $request->lastname_furigana.'　'.$request->firstname_furigana;
+        return view('confirm', ['inputs' => $inputs, 'name' => $name, 'furigana' => $furigana]);
     }
 
     public function send(Request $request)
@@ -50,11 +54,17 @@ class CustomerController extends Controller
     public function search(Request $request)
     {
         $query = Customer::query();
-        if($request->name) {
-            $query->orWhere('name', 'like', "%{$request->name}%");
+        if($request->lastname) {
+            $query->orWhere('name', 'like', "%{$request->lastname}%");
         }
-        if($request->furigana) {
-            $query->orWhere('furigana', 'like', "%{$request->furigana}%");
+        if($request->firstname) {
+            $query->orWhere('name', 'like', "%{$request->firstname}%");
+        }
+        if($request->firstname_furigana) {
+            $query->orWhere('furigana', 'like', "%{$request->firstname_furigana}%");
+        }
+        if($request->lastname_furigana) {
+            $query->orWhere('furigana', 'like', "%{$request->lastname_furigana}%");
         }
         if($request->email) {
             $query->orWhere('email', 'like', "%{$request->email}%");
@@ -68,8 +78,12 @@ class CustomerController extends Controller
         if($request->address) {
             $query->orWhere('address', 'like', "%{$request->address}%");
         }
-        if($request->birthday) {
-            $query->orWhere('birthday', 'like', "%{$request->birthday}%");
+        if($request->birthday_at_from && $request->birthday_at_to) {
+            $query->orWhere('birthday', '>=',  Carbon::parse($request->birthday_at_from)->startOfDay())->where('birthday', '<=',  Carbon::parse($request->birthday_at_to)->endOfDay());
+        } else if($request->birthday_at_from && !$request->birthday_at_to) {
+            $query->orWhere('birthday', '>=',  Carbon::parse($request->birthday_at_from)->startOfDay());
+        } else if(!$request->birthday_at_from && $request->birthday_at_to) {
+            $query->orWhere('birthday', '<=',  Carbon::parse($request->birthday_at_to)->endOfDay());
         }
         if($request->sex) {
             $query->orWhere('sex', 'like', "%{$request->sex}%");
