@@ -23,4 +23,3 @@ Route::post('/complete', [CustomerController::class, 'send'])->name('send');
 Route::get('/management', [CustomerController::class, 'getCustomers'])->name('getCustomers');
 //顧客検索
 Route::get('/search', [CustomerController::class, 'search'])->name('search');
-//test

@@ -17,6 +17,7 @@ class CustomerController extends Controller
     public function confirm(Request $request)
     {
         Log::Debug($request);
+        $this->validate($request, Customer::$rules);
         $inputs = $request->all();
         $name = $request->lastname.'　'.$request->firstname;
         $furigana = $request->lastname_furigana.'　'.$request->firstname_furigana;

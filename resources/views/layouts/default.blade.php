@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>顧客管理システム</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <script src="{{ asset('js/common.js') }}"></script>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </head>
 <style>
@@ -121,7 +122,6 @@
   }
 </style>
 <body>
-  @livewireScripts
   <h1 class="ttl">@yield('title')</h1>
   <div class="content">
   @yield('content')
