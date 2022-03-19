@@ -132,17 +132,11 @@
       <div class="search-item-left">
         <div class="search-item">
           <p class="search-item-lbl">名前</p>
-          <label class="search-item-name-lbl">姓</label>
-          <input type="text" name="lastname" class="search-item-name-input">
-          <label class="search-item-name-lbl">名</label>
-          <input type="text" name="firstname" class="search-item-name-input">
+          <input type="text" name="name" class="search-item-name-input">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">フリガナ</p>
-          <label class="search-item-name-lbl">セイ</label>
-          <input type="text" name="lastname_furigana" class="search-item-name-input">
-          <label class="search-item-name-lbl">メイ</label>
-          <input type="text" name="firstname_furigana" class="search-item-name-input">
+          <input type="text" name="furigana" class="search-item-name-input">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">メールアドレス</p>

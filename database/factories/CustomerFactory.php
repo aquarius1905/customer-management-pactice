@@ -18,9 +18,10 @@ class CustomerFactory extends Factory
         $address = $this->faker->address();
         return [
             'name' => $this->faker->lastName.'　'.$this->faker->firstName,
+            'furignama' => $this->faker->lastNameKana.'　'.$this->faker->firstNameKana,
             'email' => $this->faker->unique()->safeEmail,
             'postcode' => $address->zipcode(),
-            'address' => $address->a(),
+            'postcode' => $address->zipcode(),
             'tel' => $this->faker->phoneNumber(),
             'birthday' => $this->faker->date($format='Y-m-d',$max='now'),
             'sex' => $this->$faker->randomElement($array=['男','女']),

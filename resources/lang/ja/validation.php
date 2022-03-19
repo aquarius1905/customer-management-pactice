@@ -142,7 +142,10 @@ return [
     */
 
     'custom' => [
-        'furigana' =>[
+        'lastname_furigana' =>[
+            'regex' => ':attributeは全角カタカナで入力してください'
+        ],
+        'firstname_furigana' =>[
             'regex' => ':attributeは全角カタカナで入力してください'
         ],
         'postcode' =>[
