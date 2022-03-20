@@ -82,7 +82,7 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>生年月日</p>
-      <input type="date" name="birthday" class="form-item-input" id="birthday" value="{{old('birthday')}}">
+      <input type="date" name="birthday" class="form-item-input" id="birthday" min="1900-01-01" value="{{old('birthday')}}">
     </div>
     <p class="error" id="birthday-error"></p>
     @error('birthday')
