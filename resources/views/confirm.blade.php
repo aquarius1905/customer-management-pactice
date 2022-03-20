@@ -15,13 +15,15 @@
   @csrf
   <div class="form-item">
     <p class="form-item-lbl">お名前</p>
-    <p class="form-item-content">{{ $name }}</p>
-    <input type="hidden" name="name" value="{{ $name }}" >
+    <p class="form-item-content">{{ $inputs['lastname'] }}　{{ $inputs['firstname'] }}</p>
+    <input type="hidden" name="lastname" value="{{ $inputs['lastname'] }}" >
+    <input type="hidden" name="firstname" value="{{ $inputs['firstname'] }}" >
   </div>
   <div class="form-item">
     <p class="form-item-lbl">フリガナ</p>
-    <p class="form-item-content">{{ $furigana }}</p>
-    <input type="hidden" name="furigana" value="{{ $furigana }}">
+    <p class="form-item-content">{{ $inputs['lastname_furigana'] }}　{{ $inputs['firstname_furigana'] }}</p>
+    <input type="hidden" name="lastname_furigana" value="{{ $inputs['lastname_furigana'] }}">
+    <input type="hidden" name="firstname_furigana" value="{{ $inputs['firstname_furigana'] }}">
   </div>
   <div class="form-item">
     <p class="form-item-lbl">電話番号</p>

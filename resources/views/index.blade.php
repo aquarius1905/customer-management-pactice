@@ -11,10 +11,10 @@
       <input type="text" name="lastname" class="form-item-name-input" id="lastname" placeholder="例：山田" value="{{old('lastname')}}">
   
       <label class="form-item-name-lbl">名</label>
-      <input type="text" name="firstname" class="form-item-name-input" id="firstname" placeholder="例：太郎" value="{{old('furigana')}}">
+      <input type="text" name="firstname" class="form-item-name-input" id="firstname" placeholder="例：太郎" value="{{old('firstname')}}">
     </div>
-      <p class="error" id="firstname-error"></p>
       <p class="error" id="lastname-error"></p>
+      <p class="error" id="firstname-error"></p>
       @error('lastname')
       <p class="error">{{ $message }}</p>
       @enderror
@@ -31,9 +31,9 @@
       <label class="form-item-name-lbl">メイ</label>
       <input type="text" name="firstname_furigana" class="form-item-name-input" id="firstname_furigana" placeholder="例：タロウ" value="{{old('firstname_furigana')}}">
     </div>
-    <p class="error" id="firstname_furigana-error"></p>
     <p class="error" id="lastname_furigana-error"></p>
-    @error('firstname_furigana')
+    <p class="error" id="firstname_furigana-error"></p>
+    @error('lastname_furigana')
     <p class="error">{{ $message }}</p>
     @enderror
     @error('firstname_furigana')

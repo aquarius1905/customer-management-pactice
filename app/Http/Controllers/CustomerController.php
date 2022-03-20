@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Carbon\Carbon;
-use Log;
 
 class CustomerController extends Controller
 {
@@ -16,28 +15,32 @@ class CustomerController extends Controller
 
     public function confirm(Request $request)
     {
-        Log::Debug($request);
         $this->validate($request, Customer::$rules);
         $inputs = $request->all();
-        $name = $request->lastname.'　'.$request->firstname;
-        $furigana = $request->firstname_furigana.'　'.$request->firstname_furigana;
-        return view('confirm', ['inputs' => $inputs, 'name' => $name, 'furigana' => $furigana]);
+        return view('confirm', ['inputs' => $inputs]);
     }
 
     public function send(Request $request)
     {
         //フォームから受け取ったactionの値を取得
         $action = $request->input('action');
-        
-        //フォームから受け取ったactionを除いたinputの値を取得
-        $inputs = $request->except('action');
 
         //actionの値で分岐
         if($action !== 'submit'){
+            //フォームから受け取ったactionを除いたinputの値を取得
+            $inputs = $request->except('action');
             return redirect()
                 ->route('index')
                 ->withInput($inputs);
         } else {//登録
+            $name = $request->lastname.'　'.$request->firstname;
+            $request->merge(['name' => $name]);
+            $furigana = $request->lastname_furigana.'　'.$request->firstname_furigana;
+            $request->merge(['furigana' => $furigana]);
+
+            //フォームから受け取ったactionを除いたinputの値を取得
+            $inputs = $request->except('action');
+
             $customer = new Customer;
             unset($inputs['_token_']);
             $customer->fill($inputs)->save();
@@ -61,8 +64,8 @@ class CustomerController extends Controller
         if($request->firstname) {
             $query->orWhere('name', 'like', "%{$request->firstname}%");
         }
-        if($request->firstname_furigana) {
-            $query->orWhere('furigana', 'like', "%{$request->firstname_furigana}%");
+        if($request->lastname_furigana) {
+            $query->orWhere('furigana', 'like', "%{$request->lastname_furigana}%");
         }
         if($request->firstname_furigana) {
             $query->orWhere('furigana', 'like', "%{$request->firstname_furigana}%");

@@ -1,16 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
-  //姓
-  let lastname = document.getElementById('lastname');
-  lastname.oninput = function () {
-    let error = document.getElementById('lastname-error');
-    error.innerHTML = (this.value != '' && this.value.length > 10) ? '姓は10文字以内で入力してください' : '';
+  {
+    //姓
+    let lastname = document.getElementById('lastname');
+    lastname.oninput = function () {
+      let error = document.getElementById('lastname-error');
+      error.innerHTML = (this.value != '' && this.value.length > 10) ? '姓は10文字以内で入力してください' : '';
+    }
+    lastname.onblur = function () {
+      if (this.value == '') {
+        let error = document.getElementById('lastname-error');
+        error.innerHTML = '姓は必須項目です';
+      }
+    }
   }
-  //名
-  let firstname = document.getElementById('firstname');
-  firstname.oninput = function () {
-    let error = document.getElementsById('firstname-error');
-    error.innerHTML = (this.value != '' && this.value.length > 10) ? '名は10文字以内で入力してください' : '';
+  {
+    //名
+    let firstname = document.getElementById('firstname');
+    firstname.oninput = function () {
+      let error = document.getElementById('firstname-error');
+      error.innerHTML = (this.value != '' && this.value.length > 10) ? '名は10文字以内で入力してください' : '';
+    }
+    firstname.onblur = function () {
+      if (this.value == '') {
+        let error = document.getElementById('firstname-error');
+        error.innerHTML = '名は必須項目です';
+      }
   }
+    }
   //セイ
   let lastname_furigana = document.getElementById('lastname_furigana');
   lastname_furigana.oninput = function () {

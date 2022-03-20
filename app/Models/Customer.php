@@ -15,13 +15,13 @@ class Customer extends Model
     public static $rules = array(
         'lastname' => 'required|max:10',
         'firstname' => 'required|max:10',
-        'firstname_furigana' => 'required|max:25|regex:/^[ァ-ヶー　]+$/u',
+        'lastname_furigana' => 'required|max:25|regex:/^[ァ-ヶー　]+$/u',
         'firstname_furigana' => 'required|max:25|regex:/^[ァ-ヶー　]+$/u',
         'email' => 'required|email',
         'postcode' => 'required|size:7',
         'address' => 'required',
         'tel' => 'required|between:10,11',
-        'birthday' => 'required',
+        'birthday' => 'required|date',
         'sex' => 'required',
         'inquiry' => 'required|max:1000',
     );
