@@ -20,7 +20,7 @@ class CustomerController extends Controller
         $this->validate($request, Customer::$rules);
         $inputs = $request->all();
         $name = $request->lastname.'　'.$request->firstname;
-        $furigana = $request->lastname_furigana.'　'.$request->firstname_furigana;
+        $furigana = $request->firstname_furigana.'　'.$request->firstname_furigana;
         return view('confirm', ['inputs' => $inputs, 'name' => $name, 'furigana' => $furigana]);
     }
 
@@ -64,8 +64,8 @@ class CustomerController extends Controller
         if($request->firstname_furigana) {
             $query->orWhere('furigana', 'like', "%{$request->firstname_furigana}%");
         }
-        if($request->lastname_furigana) {
-            $query->orWhere('furigana', 'like', "%{$request->lastname_furigana}%");
+        if($request->firstname_furigana) {
+            $query->orWhere('furigana', 'like', "%{$request->firstname_furigana}%");
         }
         if($request->email) {
             $query->orWhere('email', 'like', "%{$request->email}%");

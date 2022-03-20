@@ -8,11 +8,13 @@
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>お名前</p>
       <label class="form-item-name-lbl">姓</label>
-      <input type="text" name="lastname" class="form-item-name-input" placeholder="例：山田" value="{{old('lastname')}}">
+      <input type="text" name="lastname" class="form-item-name-input" id="lastname" placeholder="例：山田" value="{{old('lastname')}}">
   
       <label class="form-item-name-lbl">名</label>
-      <input type="text" name="firstname" class="form-item-name-input" placeholder="例：太郎" value="{{old('furigana')}}">
+      <input type="text" name="firstname" class="form-item-name-input" id="firstname" placeholder="例：太郎" value="{{old('furigana')}}">
     </div>
+      <p class="error" id="firstname-error"></p>
+      <p class="error" id="lastname-error"></p>
       @error('lastname')
       <p class="error">{{ $message }}</p>
       @enderror
@@ -25,11 +27,13 @@
       <p class="form-item-lbl">
         <span class="form-item-lbl-required">必須</span>フリガナ</p>
       <label class="form-item-name-lbl">セイ</label>
-      <input type="text" name="lastname_furigana" class="form-item-name-input" placeholder="例：ヤマダ" value="{{old('lastname_furigana')}}">
+      <input type="text" name="lastname_furigana" class="form-item-name-input" id="lastname_furigana" placeholder="例：ヤマダ" value="{{old('lastname_furigana')}}">
       <label class="form-item-name-lbl">メイ</label>
-      <input type="text" name="firstname_furigana" class="form-item-name-input" placeholder="例：タロウ" value="{{old('firstname_furigana')}}">
+      <input type="text" name="firstname_furigana" class="form-item-name-input" id="firstname_furigana" placeholder="例：タロウ" value="{{old('firstname_furigana')}}">
     </div>
-    @error('lastname_furigana')
+    <p class="error" id="firstname_furigana-error"></p>
+    <p class="error" id="lastname_furigana-error"></p>
+    @error('firstname_furigana')
     <p class="error">{{ $message }}</p>
     @enderror
     @error('firstname_furigana')
@@ -39,8 +43,9 @@
 <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>メールアドレス</p>
-      <input type="email" name="email" class="form-item-input" placeholder="例：yamada@example.com" value="{{old('email')}}">
+      <input type="email" name="email" class="form-item-input" id="email" placeholder="例：yamada@example.com" value="{{old('email')}}">
     </div>
+    <p class="error" id="email-error"></p>
     @error('email')
     <p class="error">{{ $message }}</p>
     @enderror
@@ -48,8 +53,9 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>電話番号</p>
-      <input type="text" name="tel" class="form-item-input" placeholder="例：09012345678" value="{{old('tel')}}" oninput="value = value.replace(/[^0-9]+/i,'');" minlength="10" maxlength="11">
+      <input type="text" name="tel" class="form-item-input" id="tel" placeholder="例：09012345678" value="{{old('tel')}}" oninput="value = value.replace(/[^0-9]+/i,'');" minlength="10" maxlength="11">
     </div>
+    <p class="error" id="tel-error"></p>
     @error('tel')
     <p class="error">{{ $message }}</p>
     @enderror
@@ -57,8 +63,9 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>郵便番号</p>
-      <input type="text" name="postcode" class="form-item-input" placeholder="例：1010047" oninput="value = value.replace(/[^0-9]+/i,'');" value="{{old('postcode')}}" maxlength="7" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
+      <input type="text" name="postcode" class="form-item-input" id="postcode" placeholder="例：1010047" oninput="value = value.replace(/[^0-9]+/i,'');" value="{{old('postcode')}}" maxlength="7" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
     </div>
+    <p class="error" id="postcode-error"></p>
     @error('postcode')
     <p class="error">{{ $message }}</p>
     @enderror
@@ -75,8 +82,9 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>生年月日</p>
-      <input type="date" name="birthday" class="form-item-input"  value="{{old('birthday')}}">
+      <input type="date" name="birthday" class="form-item-input" id="birthday" value="{{old('birthday')}}">
     </div>
+    <p class="error" id="birthday-error"></p>
     @error('birthday')
     <p class="error">{{ $message }}</p>
     @enderror
@@ -96,8 +104,9 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>お問い合わせ内容</p>
-      <textarea name="inquiry" class="form-item-textarea" placeholder="お問い合わせ内容をご入力ください">{{ old('inquiry') }}</textarea>
+      <textarea name="inquiry" class="form-item-textarea" id="inquiry" placeholder="お問い合わせ内容をご入力ください">{{ old('inquiry') }}</textarea>
     </div>
+    <p class="error" id="inquiry-error"></p>
     @error('inquiry')
     <p class="error">{{ $message }}</p>
     @enderror
