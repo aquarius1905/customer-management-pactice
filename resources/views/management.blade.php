@@ -158,15 +158,15 @@
         </div>
         <div class="search-item">
           <p class="search-item-lbl">生年月日</p>
-          <input type="date" name="birthday_at_from" class="search-item-date-input" value="@if(isset($inputs)){{ $inputs['birthday_at_from'] }}@endif">
+          <input type="date" name="birthday_at_from" class="search-item-date-input" value="@if(isset($inputs)){{ $inputs['birthday_at_from'] }}@endif" min="1900-01-01">
           <label class="search-item-date-lbl">～</label>
-          <input type="date" name="birthday_at_to" class="search-item-date-input" value="@if(isset($inputs)){{ $inputs['birthday_at_to'] }}@endif">
+          <input type="date" name="birthday_at_to" class="search-item-date-input" value="@if(isset($inputs)){{ $inputs['birthday_at_to'] }}@endif" min="1900-01-01">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">性別</p>
           <div class="search-item-radio">
-            <input type="radio" name="sex" id="mail" value="男" ><label for="mail" class="sex_lbl">男</label>
-            <input type="radio" name="sex" id="femail" value="女" ><label for="femail" class="sex_lbl">女</label>
+            <input type="radio" name="sex" id="mail" value="男" "@if(isset($inputs) && $inputs['sex'] == '男') checked @endif"><label for="mail" class="sex_lbl">男</label>
+            <input type="radio" name="sex" id="femail" value="女" "@if(isset($inputs) && $inputs['sex'] == '女') checked @endif"><label for="femail" class="sex_lbl">女</label>
           </div>
         </div>
         <div class="search-item">
