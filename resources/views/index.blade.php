@@ -53,7 +53,7 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>電話番号</p>
-      <input type="text" name="tel" class="form-item-input" id="tel" placeholder="例：09012345678" value="{{old('tel')}}" oninput="value = value.replace(/[^0-9]+/i,'');" minlength="10" maxlength="11">
+      <input type="text" name="tel" class="form-item-input" id="tel" placeholder="例：09012345678" value="{{old('tel')}}" minlength="10" maxlength="11">
     </div>
     <p class="error" id="tel-error"></p>
     @error('tel')
@@ -63,7 +63,7 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>郵便番号</p>
-      <input type="text" name="postcode" class="form-item-input" id="postcode" placeholder="例：1010047" oninput="value = value.replace(/[^0-9]+/i,'');" value="{{old('postcode')}}" maxlength="7" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
+      <input type="text" name="postcode" class="form-item-input" id="postcode" placeholder="例：1010047" oninput="this.value = this.value.replace(/[^0-9]+/,'');" value="{{old('postcode')}}" maxlength="7" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
     </div>
     <p class="error" id="postcode-error"></p>
     @error('postcode')
@@ -73,8 +73,9 @@
   <div>
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>住所</p>
-      <input type="text" name="address" class="form-item-input" placeholder="例：東京都千代田区内神田１－１－１　内神田ハイツ４０１号" value="{{old('address')}}">
+      <input type="text" name="address" class="form-item-input" id="address" placeholder="例：東京都千代田区内神田１－１－１　内神田ハイツ４０１号" value="{{old('address')}}">
     </div>
+    <p class="error" id="address-error"></p>
     @error('address')
     <p class="error">{{ $message }}</p>
     @enderror
