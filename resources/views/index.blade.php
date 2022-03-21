@@ -94,7 +94,7 @@
     <div class="form-item">
       <p class="form-item-lbl"><span class="form-item-lbl-required">必須</span>性別</p>
       <div class="form-item-radio">
-        <input type="radio" name="sex" id="mail" value="男" {{ old('sex', '男')=='男' ? 'checked' : '' }}><label for="mail" class="sex_lbl">男</label>
+        <input type="radio" name="sex" id="mail" value="男" {{ old('sex', '男') =='男' ? 'checked' : '' }}><label for="mail" class="sex_lbl">男</label>
         <input type="radio" name="sex" id="femail" value="女" {{ old('sex') == '女' ? 'checked' : '' }}><label for="femail" class="sex_lbl">女</label>
       </div>
     </div>

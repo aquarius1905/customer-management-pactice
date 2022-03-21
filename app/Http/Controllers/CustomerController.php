@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Carbon\Carbon;
+use Log;
 
 class CustomerController extends Controller
 {
@@ -42,7 +43,7 @@ class CustomerController extends Controller
             $inputs = $request->except('action');
 
             $customer = new Customer;
-            unset($inputs['_token_']);
+            unset($inputs['_token']);
             $customer->fill($inputs)->save();
             //送信完了ページのviewを表示
             return view('complete');
@@ -57,18 +58,15 @@ class CustomerController extends Controller
 
     public function search(Request $request)
     {
+        $inputs = $request->input();
+        unset($inputs['_token']);
+
         $query = Customer::query();
-        if($request->lastname) {
-            $query->orWhere('name', 'like', "%{$request->lastname}%");
+        if($request->name) {
+            $query->orWhere('name', 'like', "%{$request->name}%");
         }
-        if($request->firstname) {
-            $query->orWhere('name', 'like', "%{$request->firstname}%");
-        }
-        if($request->lastname_furigana) {
-            $query->orWhere('furigana', 'like', "%{$request->lastname_furigana}%");
-        }
-        if($request->firstname_furigana) {
-            $query->orWhere('furigana', 'like', "%{$request->firstname_furigana}%");
+        if($request->furigana) {
+            $query->orWhere('furigana', 'like', "%{$request->furigana}%");
         }
         if($request->email) {
             $query->orWhere('email', 'like', "%{$request->email}%");
@@ -96,6 +94,6 @@ class CustomerController extends Controller
             $query->orWhere('inquiry', 'like', "%{$request->inquiry}%");
         }
         $items = $query->get();
-        return view('management', ['items' => $items]);
+        return view('management', ['items' => $items])->with('inputs', $inputs);
     }
 }
