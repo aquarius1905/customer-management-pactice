@@ -121,3 +121,8 @@ window.onload = function () {
   today = yyyy + '-' + mm + '-' + dd;
   document.getElementById("birthday").setAttribute("max", today);
 }
+{
+  function resetSearchCondition() {
+    console.log('reset');
+  }
+}

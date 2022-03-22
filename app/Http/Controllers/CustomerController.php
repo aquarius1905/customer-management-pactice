@@ -60,6 +60,7 @@ class CustomerController extends Controller
     {
         $inputs = $request->input();
         unset($inputs['_token']);
+        Log::Debug($inputs);
 
         $query = Customer::query();
         if($request->name) {
@@ -95,5 +96,9 @@ class CustomerController extends Controller
         }
         $items = $query->get();
         return view('management', ['items' => $items])->with('inputs', $inputs);
+    }
+    
+    public function password() {
+        return view('password');
     }
 }

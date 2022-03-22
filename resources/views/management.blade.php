@@ -84,10 +84,7 @@
       margin-left: 40px;
       font-size: 18px;
   }
-  .search-btn-wrapper {
-    display: flex;
-    margin: 0 auto;
-  }
+  .clear-btn,
   .search-btn {
       border-radius: 6px;
       margin: 20px auto 0;
@@ -100,6 +97,11 @@
       font-size: 20px;
       border: none;
       cursor: pointer;
+  }
+  .clear-btn {
+      width: 180px;
+      font-size: 18px;
+      background: #009ffc;
   }
   .management-form {
     width: 90%;
@@ -126,7 +128,7 @@
 @section('content')
 <div class="search">
   <h2 class="sub_ttl">顧客検索</h2>
-  <form class="search-form" action="{{ route('search') }}" method="get">
+  <form class="search-form" action="{{ route('search') }}" method="get" name="search">
     @csrf
     <div class="search-item-wrapper">
       <div class="search-item-left">
@@ -165,8 +167,8 @@
         <div class="search-item">
           <p class="search-item-lbl">性別</p>
           <div class="search-item-radio">
-            <input type="radio" name="sex" id="mail" value="男" "@if(isset($inputs) && $inputs['sex'] == '男') checked @endif"><label for="mail" class="sex_lbl">男</label>
-            <input type="radio" name="sex" id="femail" value="女" "@if(isset($inputs) && $inputs['sex'] == '女') checked @endif"><label for="femail" class="sex_lbl">女</label>
+            <input type="radio" name="sex" id="mail" value="男" "@if(isset($inputs) && isset($inputs['sex']) && ($inputs['sex'] == '男')) checked @endif"><label for="mail" class="sex_lbl">男</label>
+            <input type="radio" name="sex" id="femail" value="女" "@if(isset($inputs) && isset($inputs['sex']) &&$inputs['sex'] == '女') checked @endif"><label for="femail" class="sex_lbl">女</label>
           </div>
         </div>
         <div class="search-item">
@@ -175,7 +177,10 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="search-btn">検索</button>
+    <div class="btn-wrapper">
+      <button type="button" class="clear-btn" onclick="resetSearchCondition()">検索条件クリア</button>
+      <button type="submit" class="search-btn">検索</button>
+    </div>
   </form>
 </div>
 <div class="management-form">
