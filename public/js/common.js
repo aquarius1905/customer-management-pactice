@@ -123,6 +123,27 @@ window.onload = function () {
 }
 {
   function resetSearchCondition() {
-    console.log('reset');
+    let name = document.getElementById('name');
+    name.value = '';
+    let furigana = document.getElementById('furigana');
+    furigana.value = '';
+    let tel = document.getElementById('tel');
+    tel.value = '';
+    let email = document.getElementById('email');
+    email.value = '';
+    let postcode = document.getElementById('postcode');
+    postcode.value = '';
+    let address = document.getElementById('address');
+    address.value = '';
+    let birthday_at_from = document.getElementById('birthday_at_from');
+    birthday_at_from.value = '';
+    let birthday_at_to = document.getElementById('birthday_at_to');
+    birthday_at_to.value = '';
+    let mail = document.getElementById('mail');
+    mail.checked = false;
+    let femail = document.getElementById('femail');
+    femail.checked = false;
+    let inquiry = document.getElementById('inquiry');
+    inquiry.value = '';
   }
 }

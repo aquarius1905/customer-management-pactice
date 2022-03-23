@@ -128,52 +128,52 @@
 @section('content')
 <div class="search">
   <h2 class="sub_ttl">顧客検索</h2>
-  <form class="search-form" action="{{ route('search') }}" method="get" name="search">
+  <form class="search-form" action="{{ route('search') }}" method="get" id="search-form">
     @csrf
     <div class="search-item-wrapper">
       <div class="search-item-left">
         <div class="search-item">
           <p class="search-item-lbl">名前</p>
-          <input type="text" name="name" class="search-item-name-input" value="@if(isset($inputs)){{ $inputs['name'] }}@endif">
+          <input type="text" name="name" class="search-item-name-input" id="name" value="@if(isset($inputs)){{ $inputs['name'] }}@endif">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">フリガナ</p>
-          <input type="text" name="furigana" class="search-item-name-input" value="@if(isset($inputs)){{ $inputs['furigana'] }}@endif">
+          <input type="text" name="furigana" class="search-item-name-input" id="furigana" value="@if(isset($inputs)){{ $inputs['furigana'] }}@endif">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">メールアドレス</p>
-          <input type="text" name="email" class="search-item-input" value="@if(isset($inputs)){{ $inputs['email'] }}@endif">
+          <input type="text" name="email" class="search-item-input" id="email" value="@if(isset($inputs)){{ $inputs['email'] }}@endif">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">電話番号</p>
-          <input type="text" name="tel" class="search-item-input" maxlength="11" oninput="value = value.replace(/[^0-9]+/i,'')" value="@if (isset($inputs)){{ $inputs['tel'] }}@endif">
+          <input type="text" name="tel" class="search-item-input" id="tel" maxlength="11" oninput="value = value.replace(/[^0-9]+/i,'')" value="@if (isset($inputs)){{ $inputs['tel'] }}@endif">
         </div>
       </div>
       <div class="search-item-right">
         <div class="search-item">
           <p class="search-item-lbl">郵便番号</p>
-          <input type="text" name="postcode" class="search-item-input" oninput="value = value.replace(/[^0-9]+/i,'');"  maxlength="7" value="@if(isset($inputs)){{ $inputs['postcode'] }}@endif">
+          <input type="text" name="postcode" class="search-item-input" id="postcode" oninput="value = value.replace(/[^0-9]+/i,'');"  maxlength="7" value="@if(isset($inputs)){{ $inputs['postcode'] }}@endif">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">住所</p>
-          <input type="text" name="address" class="search-item-input" value="@if(isset($inputs)){{ $inputs['address'] }}@endif">
+          <input type="text" name="address" class="search-item-input" id="address" value="@if(isset($inputs)){{ $inputs['address'] }}@endif">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">生年月日</p>
-          <input type="date" name="birthday_at_from" class="search-item-date-input" value="@if(isset($inputs)){{ $inputs['birthday_at_from'] }}@endif" min="1900-01-01">
+          <input type="date" name="birthday_at_from" class="search-item-date-input" id="birthday_at_from" value="@if(isset($inputs)){{ $inputs['birthday_at_from'] }}@endif" min="1900-01-01">
           <label class="search-item-date-lbl">～</label>
-          <input type="date" name="birthday_at_to" class="search-item-date-input" value="@if(isset($inputs)){{ $inputs['birthday_at_to'] }}@endif" min="1900-01-01">
+          <input type="date" name="birthday_at_to" class="search-item-date-input" id="birthday_at_to" value="@if(isset($inputs)){{ $inputs['birthday_at_to'] }}@endif" min="1900-01-01">
         </div>
         <div class="search-item">
           <p class="search-item-lbl">性別</p>
           <div class="search-item-radio">
-            <input type="radio" name="sex" id="mail" value="男" "@if(isset($inputs) && isset($inputs['sex']) && ($inputs['sex'] == '男')) checked @endif"><label for="mail" class="sex_lbl">男</label>
+            <input type="radio" name="sex" id="mail" value="男" "@if(isset($inputs) && isset($inputs['sex']) && ($inputs['sex'] == '男')) checked @endif" ><label for="mail" class="sex_lbl">男</label>
             <input type="radio" name="sex" id="femail" value="女" "@if(isset($inputs) && isset($inputs['sex']) &&$inputs['sex'] == '女') checked @endif"><label for="femail" class="sex_lbl">女</label>
           </div>
         </div>
         <div class="search-item">
           <p class="search-item-lbl">お問い合わせ内容</p>
-          <input name="inquiry" class="search-item-input" value="@if(isset($inputs)){{ $inputs['inquiry'] }}@endif">
+          <input name="inquiry" class="search-item-input" id="inquiry" value="@if(isset($inputs)){{ $inputs['inquiry'] }}@endif">
         </div>
       </div>
     </div>
